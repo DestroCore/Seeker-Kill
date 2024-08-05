@@ -202,7 +202,7 @@ AutoPublicPrivate:
 
     While AutoClick
     {
-        MouseClick, left, 1776, 6275,,0
+        MouseClick, left, 1776, 627,,0
     }
 return
 
