@@ -1,6 +1,8 @@
 #SingleInstance Force
+SetKeyDelay, 0
 
 #IfWinActive
+
 RanTitle = % Random_Choice("Among Us Shortcuts", "Yooo How are ya", "Heya", "The Cake is a Lie", "Destro Core!", "This is a Message", "e=mc^2", "Among Us", "Amogus", "I'm having way too much fun with these titles", "Appreciate my code", "Among Us Shortcuts!", "Among Us Shortcuts!!", "Among Us Shortcuts!!!", "Amogus 2: Electric BoogalooA", "When the Pretender is Skeptical", "When the imposter is suspicious", "Among Us Shortcuts?", "Among Us Shortcuts?!", "Shortcuts Among Us", "Shortcuts for Among Us", "Seeker Kill", "Have you realized that this title changes every time you start this up?", "Minceraft", "Removed Herobrine", "Shortcuts Among Us!!!! ", "Seeker Kill v2", "help", "Among Us Shortcuts", "This is an Easter Egg", "VS Impostor V4", "Never Gonna Give You Up", "I said right foot creep", "I will not let you destroy my world", "Hakai", "Kakarot", "Settings for Among Us", "Among Us Utilities", "The Powder Toy", "Stick Ranger - Dan Ball", "The Powder Game", "Super Smash Flash 2", "What's the point of us being here? Are we here just for the amusement of someone else? Are we just here to be tested as a simulation, as something for people to simply laugh about? I don't understand this anymore.", "☝︎✌︎💧︎❄︎☜︎☼︎","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Among Us Shortcuts","Sup")
 
 Random_Choice(Choices*){
@@ -54,6 +56,7 @@ IniRead, o2key, config.ini, SABOTAGES, o2c, numpad3
 IniRead, commskey, config.ini, SABOTAGES, commsc, numpad4
 IniRead, killkey, config.ini, KILLBUTTON, killc, q
 
+
 Hotkey,%sskey%,SeekerKill
 Hotkey,%cckey%,ClickerKill
 Hotkey,%ckey%,Chat
@@ -67,7 +70,7 @@ Hotkey,%lightskey%,LightsSkeld
 Hotkey,%o2key%,O2Skeld
 Hotkey,%commskey%,CommsSkeld
 
-currentVer = 1.1.0
+currentVer = 1.2.0
 
 PageRequest := ComObjCreate("WinHttp.WinHttpRequest.5.1")
 PageRequest.Open("GET", "https://raw.githubusercontent.com/DestroCore/Among-Us-Shortcuts/Version-Checker/latest.txt", true)
@@ -95,8 +98,7 @@ if (latestVer != currentVer) {
 return
 
 
-
-
+;:*:paste::first game impostor and green has to get voted out immediately. i couldn't win
 
 
 
@@ -200,15 +202,18 @@ AutoPublicPrivate:
 
     While AutoClick
     {
-        MouseClick, left, 689, 985,,0
+        MouseClick, left, 1776, 6275,,0
     }
 return
+
+
 
 
 
 ;Bonus
 
 :*:=)::=) It's kill or be killed after all
+:*:N-N::>:(
 
 
 
@@ -218,7 +223,7 @@ return
     ; Settings Menu
     SettingsMenu() {
          if (WinActive("ahk_exe Among Us.exe")) {
-            MouseClick, left, 1849, 61,,0
+            MouseClick, left, 1688, 80,,0
         }
     }
     return
@@ -227,25 +232,45 @@ return
     ; Leave Game
     Leave() {
         if (WinActive("ahk_exe Among Us.exe")) {
-            MouseClick, left, 1849, 61,,0
+            MouseClick, left, 1688, 80,,0
             Sleep, 100
             MouseClick, left, 957, 874,,0
         }
     }
     return
 
-
+    
+    #IfWinActive ahk_exe Among Us.exe
     ;Chat
     Chat() {
-        ; if (WinActive("ahk_exe Among Us.exe")) {
-            MouseClick, left, 1520, 142,,0
-            Sleep 10
-            MouseClick, left, 1713, 48,,0
+        if (WinActive("ahk_exe Among Us.exe")) {
+            MouseClick, left, 1578, 78,,0
+            ;Sleep 10
+            ;MouseClick, left, 1713, 48,,0
             Sleep 100
             MouseClick, left, 641, 864,,0
-        ; }
+        /*} else {
+            Send Hi
+            ;Send ^t
+            return
+*/
+        }
     }
     return
+
+    #IfWinActive
+    +^T::
+    MouseClick, left, 1578, 78,,0
+    Sleep 10
+    MouseClick, left, 1578, 78,, 0
+    Sleep 100
+    ;MouseClick, left, 641, 864,,0
+    Sleep 100
+    Send, Where's the body? State the location of the corpse
+    Sleep 10
+    Send {Enter}
+    return
+
 
 
     ; Admin Swipe
@@ -267,7 +292,10 @@ return
         if (WinActive("ahk_exe Among Us.exe")) {
             Send {Tab}
             Sleep 10
+            MouseClick, left, 1025, 263,,0
+            ;MouseClick, left, 366, 303,,0
             MouseClick, left, 169, 526,,0
+            MouseClick, left, 780, 706,,0
             Sleep 100
             Send {Esc}
         }
@@ -278,6 +306,7 @@ return
     LightsSkeld() {
         Send {Tab}
         Sleep 10
+        MouseClick, left, 1025, 263,,0
         MouseClick, left, 780, 706,,0
         Sleep 100
         Send {Esc}
@@ -312,6 +341,22 @@ return
         MouseClick, left, 1544, 640,,0
         Sleep 200
         MouseClick, left, 965, 612,,0
+
+        ; 2 impostors
+        Sleep 1000
+        MouseClick, left, 1497, 160,,0
+        Sleep 200
+        MouseClick, left, 1732, 397,,0
+    }
+    return
+
+    ;NoMoreTakebacks
+    NoMore() {
+        MouseClick, left, 145, 192,,0
+        Sleep 100
+        MouseClick, left, 1522, 644,,0
+        Sleep 100
+        Send {Tab}
     }
     return
 ;}
@@ -328,12 +373,27 @@ return
 
 
 
+;Play Again
+^#::
+MouseClick, left, 1582, 896,,0
+Sleep 200
+MouseClick, left, 1786, 901,,0
+return
+
+;Quit Round
++^#::
+MouseClick, left, 1582, 896,,0
+Sleep 200
+MouseClick, left, 133, 885,,0
+return
+
 
 
 ; Admin Commands
 
 F7::
 Suspend
+Pause,,1
 If (A_IsSuspended) {
     Gui SUS:New
     Gui +AlwaysOnTop -Caption +Disabled
@@ -359,4 +419,5 @@ Send, {ctrl down}s{ctrl up}
 sleep, 100
 reload
 return
+
 #IfWinActive
